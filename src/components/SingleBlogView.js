@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import Moment from 'moment'
 import SingleBlogViewSubMenu from './SingleBlogViewSubMenu'
+import ReactMarkdown from 'react-markdown'
 
 class SingleBlogView extends Component {
   render() {
@@ -17,7 +18,7 @@ class SingleBlogView extends Component {
           <SingleBlogViewSubMenu blogId={blog.id}/>
           <h3>{blog.title}</h3>
           <h5>Added by {blog.user.name} {Moment(blog.created).fromNow()}</h5>
-          <p>{blog.content}</p>
+          <ReactMarkdown source={blog.content} />
         </div>
       )
     }

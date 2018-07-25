@@ -41,7 +41,7 @@ class MenuBar extends React.Component {
           <Menu.Item
             as={Button}
             onClick={this.logout}
-            color='red'
+            color={menuItemColor}
             content='Logout'
             icon='user'
           />

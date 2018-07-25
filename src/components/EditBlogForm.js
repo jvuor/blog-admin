@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form, Button, TextArea, Radio } from 'semantic-ui-react'
 import { actionBlogEdit } from '../actions/blogActions'
+import MarkdownPreview from './MarkdownPreview'
 
 class EditBlogForm extends Component {
   constructor (props) {
@@ -39,16 +40,19 @@ class EditBlogForm extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.formSubmit}>
-        <Form.Field>
-          <label>Title</label>
-          <input placeholder='Title' value={this.state.title} onChange={this.handleTitleChange} />
-        </Form.Field>
-        <Radio toggle label='Make this post important' checked={this.state.sticky} onChange={this.handleStickyChange} />
-        <TextArea rows={10} placeholder='Write here...' value={this.state.content} onChange={this.handleContentChange} />
-        <Button type='submit'>Submit</Button>
-        <Button type='reset'>Reset</Button>
-      </Form>
+      <div>
+        <Form onSubmit={this.formSubmit}>
+          <Form.Field>
+            <label>Title</label>
+            <input placeholder='Title' value={this.state.title} onChange={this.handleTitleChange} />
+          </Form.Field>
+          <Radio toggle label='Make this post important' checked={this.state.sticky} onChange={this.handleStickyChange} />
+          <TextArea rows={10} placeholder='Write here...' value={this.state.content} onChange={this.handleContentChange} />
+          <Button type='submit'>Submit</Button>
+          <Button type='reset'>Reset</Button>
+        </Form>
+        <MarkdownPreview content={this.state.content} />
+      </div>
     )
   }
 }

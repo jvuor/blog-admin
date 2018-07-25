@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form, Button, TextArea, Radio } from 'semantic-ui-react'
 import { actionBlogAdd } from '../actions/blogActions'
+import MarkdownPreview from './MarkdownPreview'
 
 class NewBlog extends Component {
   constructor (props) {
@@ -33,16 +34,19 @@ class NewBlog extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.formSubmit}>
-        <Form.Field>
-          <label>Title</label>
-          <input placeholder='Title' value={this.state.username} onChange={this.handleTitleChange} />
-        </Form.Field>
-        <Radio toggle label='Make this post important' onChange={this.handleStickyChange} />
-        <TextArea rows={10} placeholder='Write here...' onChange={this.handleContentChange} />
-        <Button type='submit'>Submit</Button>
-        <Button type='reset'>Reset</Button>
-      </Form>
+      <div>
+        <Form onSubmit={this.formSubmit}>
+          <Form.Field>
+            <label>Title</label>
+            <input placeholder='Title' value={this.state.username} onChange={this.handleTitleChange} />
+          </Form.Field>
+          <Radio toggle label='Make this post important' onChange={this.handleStickyChange} />
+          <TextArea rows={10} placeholder='Write here...' onChange={this.handleContentChange} />
+          <Button type='submit'>Submit</Button>
+          <Button type='reset'>Reset</Button>
+        </Form>
+        <MarkdownPreview content={this.state.content} />
+      </div>
     )
   }
 }
