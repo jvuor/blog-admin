@@ -45,7 +45,7 @@ const editBlog = async (data) => {
   }
 
   console.log('edit request:', data)
-  const response = await axios.put(`${baseUrl}/${data.id}`, config)
+  const response = await axios.put(`${baseUrl}/${data.id}`, data, config)
   return response.data
 }
 
