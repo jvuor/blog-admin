@@ -1,6 +1,6 @@
 const reducer = (store = null, action) => {
   if(action.type === 'BLOGNEW') {
-    return store.concat(action.data)
+    return [action.data, ...store]
   }
   if(action.type === 'BLOGDELETE') {
     const id = action.id
