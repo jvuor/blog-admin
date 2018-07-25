@@ -33,3 +33,18 @@ export const actionBlogDelete = (id) => {
     })
   }
 }
+
+export const actionBlogEdit = (data) => {
+  return async (dispatch) => {
+    const response = await blogService.editBlog(data)
+    console.log('server response', response)
+
+    dispatch({
+      type: 'BLOGEDIT',
+      id: data.id,
+      title: data.title,
+      content: data.content,
+      sticky: data.sticky
+    })
+  }
+}

@@ -39,4 +39,14 @@ const deleteBlog = async (id) => {
   return response.data
 }
 
-export default { getAll, setToken, postBlog, deleteBlog }
+const editBlog = async (data) => {
+  const config = {
+    headers: { 'Authorization': token} 
+  }
+
+  console.log('edit request:', data)
+  const response = await axios.put(`${baseUrl}/${data.id}`, config)
+  return response.data
+}
+
+export default { getAll, setToken, postBlog, deleteBlog, editBlog }
