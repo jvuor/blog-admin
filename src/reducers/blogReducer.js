@@ -11,7 +11,6 @@ const reducer = (store = null, action) => {
     return action.data
   }
   if(action.type === 'BLOGEDIT') {
-    console.log('edit', action)
     const editedIndex = store.findIndex(blog => blog.id === action.id)
     const newBlogData = {
       ...store[editedIndex],
@@ -19,7 +18,6 @@ const reducer = (store = null, action) => {
       content: action.content,
       sticky: action.sticky
     }
-    console.log(newBlogData)
 
     return store.map(blog => blog.id === newBlogData.id? newBlogData : blog)
   }
