@@ -18,9 +18,9 @@ class SingleBlogViewSubMenu extends React.Component {
 
     return (
       <Button.Group>
-        <Button as={Link} to='/' icon='backward' content='Back' />
-        <Button as={Link} to={`/edit/${this.props.blogId}`} content='Edit' />
-        <Button onClick={this.open} icon='delete' content='Delete' />
+        <Button color='grey' as={Link} to='/' icon='backward' content='Back' />
+        <Button color='grey' as={Link} to={`/edit/${this.props.blogId}`} content='Edit' />
+        <Button color='grey' onClick={this.open} icon='delete' content='Delete' />
         <Confirm open={this.state.open} onCancel={this.close} onConfirm={this.deleteBlog} />
       </Button.Group>
     )
