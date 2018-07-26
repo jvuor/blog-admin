@@ -37,6 +37,15 @@ class MenuBar extends React.Component {
           content='Add Blog Post'
           color={menuItemColor}
         />
+        <Menu.Item
+          as={Link}
+          to='/users'
+          name='users'
+          active={activeItem === 'users'}
+          onClick={this.handleItemClick}
+          content='User List'
+          color={menuItemColor}
+        />
         <Menu.Menu position='right'>
           <Menu.Item
             as={Button}
