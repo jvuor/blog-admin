@@ -1,11 +1,11 @@
-import blogService from '../services/blogs'
+import setToken from './setToken'
 
 const initializeLoginFromStorage = () => {
   const loggedUserJSON = window.localStorage.getItem('loggedUser')
   if(loggedUserJSON) {
     const user = JSON.parse(loggedUserJSON)
     console.log(user)
-    blogService.setToken(user.token)
+    setToken(user.token)
     return user
   } else {
     return null

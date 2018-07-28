@@ -14,6 +14,7 @@ import SingleBlogView from './components/SingleBlogView'
 import EditBlogForm from './components/EditBlogForm'
 import UserList from './components/UserList'
 import SingleUserView from './components/SingleUserView'
+import NewUserForm from './components/NewUserForm'
 
 class App extends React.Component {
   componentDidMount = async () => {
@@ -55,6 +56,7 @@ class App extends React.Component {
                 <Route path='/edit/:id' render={({match}) => <EditBlogForm blogId={match.params.id} />} />
                 <Route exact path='/users' render={() => <UserList />} />
                 <Route path='/users/:id' render={({match}) => <SingleUserView userId={match.params.id} />} />
+                <Route path='/newuser' render={() => <NewUserForm />} />
               </Switch>
             </div>
           </Router>

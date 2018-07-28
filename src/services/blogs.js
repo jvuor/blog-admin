@@ -34,7 +34,6 @@ const deleteBlog = async (id) => {
     headers: { 'Authorization': token}
   }
 
-  console.log('delete', id)
   const response = await axios.delete(`${baseUrl}/${id}`, config)
   return response.data
 }
@@ -44,7 +43,6 @@ const editBlog = async (data) => {
     headers: { 'Authorization': token} 
   }
 
-  console.log('edit request:', data)
   const response = await axios.put(`${baseUrl}/${data.id}`, data, config)
   return response.data
 }

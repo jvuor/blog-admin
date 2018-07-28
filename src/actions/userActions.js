@@ -9,3 +9,14 @@ export const actionUsersInit = () => {
     })
   }
 }
+
+export const actionUserAdd = (data) => {
+  return async (dispatch) => {
+    const response = await userService.postUser(data)
+    
+    dispatch({
+      type: 'USERADD',
+      data: response
+    })
+  }
+}
