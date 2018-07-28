@@ -12,7 +12,7 @@ class SingleUserView extends Component {
         <br />
         {user.blogs.length > 0 ?
         user.blogs.map(blog => 
-          <Link to={`/view/${blog.id}`}>
+          <Link key={blog._id} to={`/view/${blog._id}`}>
             {blog.title}<br />
           </Link>
         ) :
