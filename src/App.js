@@ -46,7 +46,7 @@ class App extends React.Component {
     } else {
       return (
         <Container>
-          <Router>
+          <Router basename='/admin'>
             <div>
               <MenuBar />
               <Switch>

@@ -13,7 +13,6 @@ export const actionBlogInit = () => {
 export const actionBlogAdd = (data) => {
   return async (dispatch) => {
     const response = await blogService.postBlog(data)
-    console.log('server response', response)
     
     dispatch({
       type: 'BLOGNEW',
@@ -37,7 +36,6 @@ export const actionBlogDelete = (id) => {
 export const actionBlogEdit = (data) => {
   return async (dispatch) => {
     const response = await blogService.editBlog(data)
-    console.log('server response', response)
 
     dispatch({
       type: 'BLOGEDIT',

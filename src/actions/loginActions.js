@@ -4,9 +4,7 @@ import blogService from '../services/blogs'
 export const actionLogin = (credentials) => {
   return async (dispatch) => { 
     try {
-      console.log('credentials', credentials)
       const response = await loginService.login(credentials)
-      console.log('response', response)
       
       dispatch({
         type: 'LOGIN',
