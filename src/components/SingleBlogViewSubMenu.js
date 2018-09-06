@@ -11,7 +11,9 @@ class SingleBlogViewSubMenu extends React.Component {
   close = () => this.setState({ open: false })
 
   deleteBlog = (event) => {
-    this.props.actionBlogDelete(this.props.blogId)
+    if(!this.props.demo) {
+      this.props.actionBlogDelete(this.props.blogId)
+    }
   }
  
   render() {
@@ -20,11 +22,17 @@ class SingleBlogViewSubMenu extends React.Component {
       <Button.Group>
         <Button color='grey' as={Link} to='/' icon='backward' content='Back' />
         <Button color='grey' as={Link} to={`/edit/${this.props.blogId}`} content='Edit' />
-        <Button color='grey' onClick={this.open} icon='delete' content='Delete' />
+        <Button color='grey' onClick={this.open} icon='delete' content='Delete' disabled={this.props.login.demo} />
         <Confirm open={this.state.open} onCancel={this.close} onConfirm={this.deleteBlog} />
       </Button.Group>
     )
   }
 }
 
-export default connect(null, { actionBlogDelete })(SingleBlogViewSubMenu)
+const mapStateToProps = (state) => {
+  return {
+    login: state.login
+  }
+}
+
+export default connect(mapStateToProps, { actionBlogDelete })(SingleBlogViewSubMenu)

@@ -41,8 +41,15 @@ export const actionUserFromStorage = (credentials) => {
 }
 
 export const actionLogout = () => {
-  window.localStorage.removeItem('loggedUser')
-  return {
-    type: 'LOGOUT'
+  return (dispatch) => {
+    window.localStorage.removeItem('loggedUser')
+    dispatch({type: 'LOGOUT'})
+  }
+}
+
+export const actionDemoIn = () => {
+  return (dispatch) => {
+    dispatch({ type: 'LOGOUT' })
+    dispatch({ type: 'DEMOIN' })
   }
 }

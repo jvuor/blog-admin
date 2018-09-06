@@ -59,7 +59,7 @@ class EditBlogForm extends Component {
           </Form.Field>
           <Radio toggle label='Make this post important' checked={this.state.sticky} onChange={this.handleStickyChange} />
           <TextArea rows={10} placeholder='Write here...' value={this.state.content} onChange={this.handleContentChange} />
-          <Button color='grey' type='submit'>Submit</Button>
+          <Button color='grey' type='submit' disabled={this.props.login.demo}>Submit</Button>
           <Button color='grey' type='reset'>Reset</Button>
           <Button color='grey' as={Link} to='/'>Cancel</Button>
         </Form>
@@ -71,7 +71,8 @@ class EditBlogForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    blogs: state.blogs
+    blogs: state.blogs,
+    login: state.login
   }
 }
 

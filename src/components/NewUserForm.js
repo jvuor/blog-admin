@@ -57,7 +57,7 @@ class NewUserForm extends Component {
       password: this.state.password
     }
 
-    if (this.state.canSubmit) {
+    if (this.state.canSubmit && !this.props.login.demo) {
       this.props.actionUserAdd(dataToSubmit)
       this.setState({submitted: true})
     }
@@ -96,7 +96,7 @@ class NewUserForm extends Component {
               type='password'
             />
           </Form.Field>
-          {this.state.canSubmit ? 
+          {this.state.canSubmit && !this.props.login.demo ? 
           <Button color='grey' type='submit'>Submit</Button> :
           <Button disabled color='grey' type='submit'>Submit</Button> }
           <Button color='grey' type='reset'>Reset</Button>
@@ -115,7 +115,7 @@ class NewUserForm extends Component {
 
 function mapStateToProps(state) {
   return {
-
+    login: state.login
   }
 }
 

@@ -36,7 +36,7 @@ class NewBlog extends Component {
       sticky: this.state.sticky
     }
 
-    if (dataToSubmit.title && dataToSubmit.content) {
+    if (dataToSubmit.title && dataToSubmit.content && !this.props.login.demo) {
       this.props.actionBlogAdd(dataToSubmit)
       this.setState({submitted: true})
     }
@@ -53,7 +53,7 @@ class NewBlog extends Component {
           </Form.Field>
           <Radio toggle label='Make this post important' onChange={this.handleStickyChange} />
           <TextArea rows={10} placeholder='Write here...' onChange={this.handleContentChange} />
-          {!this.state.content || !this.state.title ? 
+          {!this.state.content || !this.state.title || this.props.login.demo ? 
           <Button disabled color='grey' type='submit'>Submit</Button> :
           <Button color='grey' type='submit'>Submit</Button> }
           <Button color='grey' type='reset'>Reset</Button>
@@ -64,4 +64,10 @@ class NewBlog extends Component {
   }
 }
 
-export default connect(null, { actionBlogAdd })(NewBlog)
+const mapStateToProps = (state) => {
+  return {
+    login: state.login
+  }
+}
+
+export default connect(mapStateToProps, { actionBlogAdd })(NewBlog)

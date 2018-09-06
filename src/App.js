@@ -33,7 +33,7 @@ class App extends React.Component {
           <Loader inverted>Loading</Loader>
         </Dimmer>
       )
-    } else if(!this.props.login.loggedIn) {
+    } else if(!this.props.login.loggedIn && !this.props.login.demo) {
       return (
         <Container textAlign='center'>
           <Grid centered>

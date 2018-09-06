@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button, Form } from 'semantic-ui-react'
-import { actionLogin } from '../actions/loginActions'
+import { actionLogin, actionDemoIn } from '../actions/loginActions'
 
 
 class LoginForm extends Component {
@@ -26,17 +26,21 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.formSubmit}>
-        <Form.Field>
-          <label>Username</label>
-          <input placeholder='Username' value={this.state.username} onChange={this.handleUsernameChange} />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input type='password' value={this.state.password} placeholder='Password' onChange={this.handlePasswordChange} />
-        </Form.Field>
-        <Button type='submit'>Submit</Button>
-      </Form>
+      <div>
+        <Form onSubmit={this.formSubmit}>
+          <Form.Field>
+            <label>Username</label>
+            <input placeholder='Username' value={this.state.username} onChange={this.handleUsernameChange} />
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input type='password' value={this.state.password} placeholder='Password' onChange={this.handlePasswordChange} />
+          </Form.Field>
+          <Button type='submit'>Submit</Button>
+        </Form>
+        <br />
+        <Button primary onClick={() => this.props.actionDemoIn()}>Enter in demo mode</Button>
+      </div>
     )
   }
 }
@@ -47,4 +51,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { actionLogin })(LoginForm)
+export default connect(mapStateToProps, { actionLogin, actionDemoIn })(LoginForm)
