@@ -15,7 +15,7 @@ class SingleBlogView extends Component {
     } else {
       return (
         <div>
-          <SingleBlogViewSubMenu blogId={blog.id}/>
+          <SingleBlogViewSubMenu blogId={blog.id} publishStatus = {blog.published} />
           <h3>{blog.title}</h3>
           <h5>Added by {blog.user.name} {Moment(blog.created).fromNow()}</h5>
           <ReactMarkdown source={blog.content} />

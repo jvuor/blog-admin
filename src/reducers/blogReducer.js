@@ -16,7 +16,8 @@ const reducer = (store = null, action) => {
       ...store[editedIndex],
       title: action.title,
       content: action.content,
-      sticky: action.sticky
+      sticky: action.sticky,
+      published: action.published
     }
 
     return store.map(blog => blog.id === newBlogData.id? newBlogData : blog)

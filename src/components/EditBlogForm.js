@@ -13,6 +13,7 @@ class EditBlogForm extends Component {
       title: blog.title,
       content: blog.content,
       sticky: blog.sticky,
+      published: blog.published,
       submitted: false
     }
   }
@@ -41,7 +42,8 @@ class EditBlogForm extends Component {
       id: this.props.blogId,
       title: this.state.title,
       content: this.state.content,
-      sticky: this.state.sticky
+      sticky: this.state.sticky,
+      published: this.state.published
     }
 
     this.props.actionBlogEdit(dataToSubmit)

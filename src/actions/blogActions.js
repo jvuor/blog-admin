@@ -39,10 +39,27 @@ export const actionBlogEdit = (data) => {
 
     dispatch({
       type: 'BLOGEDIT',
-      id: data.id,
-      title: data.title,
-      content: data.content,
-      sticky: data.sticky
+      id: response.id,
+      title: response.title,
+      content: response.content,
+      sticky: response.sticky,
+      published: response.published
+    })
+  }
+}
+
+export const actionSetPublishStatus = (id, status) => {
+  return async (dispatch) => {
+    const response = await blogService.editBlog({id: id, published: status})
+    console.log(response)
+
+    dispatch({
+      type: 'BLOGEDIT',
+      id: response.id,
+      title: response.title,
+      content: response.content,
+      sticky: response.sticky,
+      published: response.published
     })
   }
 }

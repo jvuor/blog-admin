@@ -11,7 +11,11 @@ if(hostname !== 'localhost') {
 var token = null
 
 const getAll = () => {
-  const request = axios.get(baseUrl)
+  const config = {
+    headers: { 'Authorization': token}
+  }
+
+  const request = axios.get(baseUrl + '/all', config)
   return request.then(response => response.data)
 }
 

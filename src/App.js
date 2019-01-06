@@ -19,21 +19,16 @@ import NewUserForm from './components/NewUserForm'
 class App extends React.Component {
   componentDidMount = async () => {
     const user = initializeLogin()
-    if (user) { this.props.actionUserFromStorage(user) }
-
-    await this.props.actionBlogInit()
-    await this.props.actionUsersInit()
+    if (user) { 
+      this.props.actionUserFromStorage(user) 
+      this.props.actionBlogInit()
+      this.props.actionUsersInit()
+    }
   }
 
   render() {
     var loading = !this.props.users || !this.props.blogs
-    if(loading) {
-      return (
-        <Dimmer active inverted>
-          <Loader inverted>Loading</Loader>
-        </Dimmer>
-      )
-    } else if(!this.props.login.loggedIn && !this.props.login.demo) {
+    if(!this.props.login.loggedIn && !this.props.login.demo) {
       return (
         <Container textAlign='center'>
           <Grid centered>
@@ -42,6 +37,12 @@ class App extends React.Component {
             </Grid.Row>
           </Grid>
         </Container>
+      )
+    } else if(loading) {
+      return (
+        <Dimmer active inverted>
+          <Loader inverted>Loading</Loader>
+        </Dimmer>
       )
     } else {
       return (

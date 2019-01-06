@@ -5,7 +5,8 @@ import Moment from 'moment'
 
 class BlogListItem extends React.Component {
   render () {
-    var icon = this.props.blog.sticky? 'exclamation' : 'envelope outline'
+    const stickyIcon = this.props.blog.sticky? 'exclamation' : 'envelope outline'
+    const publishIcon = this.props.blog.published? 'star' : 'star outline'
 
     return (
       <List.Item
@@ -13,7 +14,8 @@ class BlogListItem extends React.Component {
         as={Link}
         to={`/view/${this.props.blog.id}`}
       >   
-        <Icon name={icon} />
+        <Icon name={stickyIcon} />
+        <Icon name={publishIcon} />
         <List.Content>    
           <List.Header>{this.props.blog.title}</List.Header>
           {this.props.blog.user.name} - {Moment(this.props.blog.created).fromNow()}

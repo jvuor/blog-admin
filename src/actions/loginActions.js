@@ -1,5 +1,7 @@
 import loginService from '../services/login'
 import blogService from '../services/blogs'
+import { actionBlogInit } from './blogActions'
+import { actionUsersInit  } from './userActions'
 
 export const actionLogin = (credentials) => {
   return async (dispatch) => { 
@@ -15,6 +17,10 @@ export const actionLogin = (credentials) => {
       })
 
       blogService.setToken(response.token)
+
+      actionBlogInit()
+      actionUsersInit()
+      
       window.localStorage.setItem('loggedUser', JSON.stringify(response))
 
 
