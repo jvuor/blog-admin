@@ -6,6 +6,7 @@ import initializeLogin from './config/loginInitialization'
 import { actionUserFromStorage } from './actions/loginActions'
 import { actionBlogInit } from './actions/blogActions'
 import { actionUsersInit } from './actions/userActions'
+import { actionLinksInit } from './actions/linkActions'
 import BlogList from './components/BlogList'
 import LoginForm from './components/LoginForm'
 import NewBlogForm from './components/NewBlogForm'
@@ -15,14 +16,16 @@ import EditBlogForm from './components/EditBlogForm'
 import UserList from './components/UserList'
 import SingleUserView from './components/SingleUserView'
 import NewUserForm from './components/NewUserForm'
+import LinkBox from './components/LinkBox'
 
 class App extends React.Component {
-  componentDidMount = async () => {
+  componentDidMount = () => {
     const user = initializeLogin()
     if (user) { this.props.actionUserFromStorage(user) }
 
-    await this.props.actionBlogInit()
-    await this.props.actionUsersInit()
+    this.props.actionBlogInit()
+    this.props.actionUsersInit()
+    this.props.actionLinksInit()
   }
 
   render() {
@@ -54,6 +57,7 @@ class App extends React.Component {
                 <Route path='/new' render={() => <NewBlogForm />} />
                 <Route path='/view/:id' render={({match}) => <SingleBlogView blogId={match.params.id} />} />
                 <Route path='/edit/:id' render={({match}) => <EditBlogForm blogId={match.params.id} />} />
+                <Route path='/links' render={() => <LinkBox />} />
                 <Route exact path='/users' render={() => <UserList />} />
                 <Route path='/users/:id' render={({match}) => <SingleUserView userId={match.params.id} />} />
                 <Route path='/newuser' render={() => <NewUserForm />} />
@@ -74,4 +78,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { actionBlogInit, actionUsersInit, actionUserFromStorage })(App)
+export default connect(mapStateToProps, { actionBlogInit, actionUsersInit, actionUserFromStorage, actionLinksInit })(App)

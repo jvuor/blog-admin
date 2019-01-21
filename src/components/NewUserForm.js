@@ -19,7 +19,7 @@ class NewUserForm extends Component {
   }
 
   handleFieldChange = async (event) => {
-    var submitStatus = this.checkValidity({...this.state, [event.target.name]: event.target.value})
+    const submitStatus = this.checkValidity({...this.state, [event.target.name]: event.target.value})
     await this.setState({[event.target.name]: event.target.value, ...submitStatus})
   }
 

@@ -39,6 +39,15 @@ class MenuBar extends React.Component {
         />
         <Menu.Item
           as={Link}
+          to='/links'
+          name='links'
+          active={activeItem === 'links'}
+          onClick={this.handleItemClick}
+          content='Manage Link Box'
+          color={menuItemColor}
+        />
+        <Menu.Item
+          as={Link}
           to='/users'
           name='users'
           active={activeItem === 'users'}
